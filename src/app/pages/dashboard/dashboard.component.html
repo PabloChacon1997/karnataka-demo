@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      Tipo de vehiculo
+      Empresa
+    </div>
+    <div class="col-sm-4">
+      Ciudad 
+      Vitrina
+    </div>
+    <div class="col-sm-4">
+      Año Mes
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Concesionario</th>
+            <th scope="col">Completa</th>
+            <th scope="col">Incompleta</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-4">
+      <app-base-chart [graficas]="procendencias" nombre="Origen"></app-base-chart>
+    </div>
+    <div class="col-sm-4">
+      <app-base-chart [graficas]="plataformas" nombre="Plataforma"></app-base-chart>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">VENTAS CONCESIONARIO POR PROCEDENCIA DE LEADS</div>
+    <div class="col-sm-4">VENTAS DETAL POR CANAL</div>
+    <div class="col-sm-4">VENTAS DETAL POR MEDIO</div>
+  </div>
+</div>
