@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Graficas } from '../../interfaces/graficas.interfaces';
+import { ChartConfiguration, ChartData } from 'chart.js';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,8 +9,8 @@ import { Graficas } from '../../interfaces/graficas.interfaces';
 })
 export class DashboardComponent {
 
-  public procendencias: Graficas[] = [];
-  public plataformas: Graficas[] = [];
+  public procendencias: ChartData<'bar'> = { labels: [], datasets: [] };
+  public plataformas: ChartData<'bar'>= {labels: [], datasets: [] };
 
 
   constructor() {
@@ -18,27 +19,23 @@ export class DashboardComponent {
 
   getInfo() {
 
-    this.procendencias= [
-      {
-        name: 'Concesionario',
-        total: 34
-      },
-      { 
-        name: 'Marca',
-        total: 45
-      }
-    ];
+    this.procendencias= {
+      labels: ['Origen'],
+      datasets: [
+        { data: [ 704 ], label: 'Concesionaria' },
+        { data: [ 19 ], label: 'Marca' },
+      ]
+    }
+
   
-    this.plataformas = [
-      {
-        name: 'crm',
-        total: 34
-      },
-      {
-        name: 'web',
-        total: 12
-      },
-    ];
+    this.plataformas = {
+      labels: ['Plataforma'],
+      datasets: [
+        { data: [ 127 ], label: 'crm' },
+        { data: [ 1 ], label: 'web' },
+      ]
+    }
+    
   }
 
 

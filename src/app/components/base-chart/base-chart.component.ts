@@ -13,24 +13,18 @@ import { Graficas } from '../../interfaces/graficas.interfaces';
 })
 export class BaseChartComponent {
 
-  @Input('graficas') graficas: Graficas[] = [];
-  @Input('nombre') nombre: string = '';
+  @Input('graficas') graficas: ChartData<'bar'> = { labels: [], datasets: [] };
 
   
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
 
 
-  constructor() {
-    console.log(this.nombre);
-    console.log(this.graficas);
-    console.log('const');
-  }
+  constructor() {}
 
   
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
-    // We use these empty structures as placeholders for dynamic theming.
     scales: {
       x: {},
       y: {
@@ -52,14 +46,6 @@ export class BaseChartComponent {
     DataLabelsPlugin
   ];
 
-  public barChartData: ChartData<'bar'> = {
-    labels: [this.nombre],
-    datasets: [
-      { data: [ 65 ], label: 'Concesionaria' },
-      { data: [ 23 ], label: 'Marca' },
-    ]
-  };
-
   // events
   public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
     console.log(event, active);
@@ -67,20 +53,6 @@ export class BaseChartComponent {
 
   public chartHovered({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
     console.log(event, active);
-  }
-
-  public randomize(): void {
-    // Only Change 3 values
-    this.barChartData.datasets[0].data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      Math.round(Math.random() * 100),
-      56,
-      Math.round(Math.random() * 100),
-      40 ];
-
-    this.chart?.update();
   }
 
 }
