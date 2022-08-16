@@ -12,6 +12,23 @@ export class DashboardComponent {
   public procendencias: ChartData<'bar'> = { labels: [], datasets: [] };
   public plataformas: ChartData<'bar'>= {labels: [], datasets: [] };
 
+  covenants: any = [
+    { provinceID: 1 },
+    { provinceID: 2 },
+    { provinceID: 3 },
+    { provinceID: 4 },
+    { provinceID: 5 },
+  ];
+
+  openCoverages = false;
+  indexSelectedCoverage = 1;
+
+  ngOnInit() {
+    this.covenants.forEach((covenant:any) => {
+      covenant.isExpanded = false;
+    });
+  }
+
 
   constructor() {
     this.getInfo();

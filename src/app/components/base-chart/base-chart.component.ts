@@ -4,8 +4,6 @@ import { BaseChartDirective } from 'ng2-charts';
 
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 
-import { Graficas } from '../../interfaces/graficas.interfaces';
-
 @Component({
   selector: 'app-base-chart',
   templateUrl: './base-chart.component.html',
@@ -14,6 +12,7 @@ import { Graficas } from '../../interfaces/graficas.interfaces';
 export class BaseChartComponent {
 
   @Input('graficas') graficas: ChartData<'bar'> = { labels: [], datasets: [] };
+  @Input('nombre') nombre: string = '';
 
   
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;

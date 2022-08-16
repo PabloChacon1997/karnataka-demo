@@ -24,20 +24,48 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+          <tr *ngFor="let covenant of covenants">
+            <td (click)="covenant.isExpanded = !covenant.isExpanded">
+              > Alcala
+              <div *ngIf="covenant.isExpanded" class="expanded-panel">
+                <tr class="table-row">
+                  <td class="cell">Calle 127</td>
+                </tr>
+              </div>
+            </td>
+            <td>
+              51
+              <div *ngIf="covenant.isExpanded" class="expanded-panel">
+                <tr class="table-row">
+                  <td class="cell">21</td>
+                </tr>
+              </div>
+            </td>
+            <td>
+              14
+              <div *ngIf="covenant.isExpanded" class="expanded-panel">
+                <tr class="table-row">
+                  <td class="cell">8</td>
+                </tr>
+              </div>
+            </td>
+            <td>
+              65
+              <div *ngIf="covenant.isExpanded" class="expanded-panel">
+                <tr class="table-row">
+                  <td class="cell">29</td>
+                </tr>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="col-sm-4">
-      <app-base-chart [graficas]="procendencias"></app-base-chart>
+      <app-base-chart [graficas]="procendencias" nombre="Origen"></app-base-chart>
     </div>
     <div class="col-sm-4">
-      <app-base-chart [graficas]="plataformas" ></app-base-chart>
+      <app-base-chart [graficas]="plataformas" nombre="Plataforma"></app-base-chart>
     </div>
   </div>
   <div class="row">
