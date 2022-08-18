@@ -8,9 +8,13 @@ import { Injectable } from '@angular/core';
 export class FacDetOrService {
 
   constructor( private http: HttpClient ) { }
-  // public url = 'jdbc:oraclethin:@//192.168.43.173:1521/dbttik';
+  public urlBase = 'http://localhost:8080/api/reports';
 
-  async getInfo() {
-    
+  getInfo() {
+    return this.http.get(this.urlBase);
+  }
+
+  getDataBy(base: string,term: string) {
+    return this.http.get(`${this.urlBase}/${base}/${term}`);
   }
 }

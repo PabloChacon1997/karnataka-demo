@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-4 table-responsive">
+    <div class="col-md-4 table-responsive-xs" style="overflow: auto; height: 200px;overflow-y: inherit;">
       <table class="table">
         <thead>
           <tr>
@@ -24,34 +24,34 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let covenant of covenants">
-            <td (click)="covenant.isExpanded = !covenant.isExpanded">
-              > Alcala
-              <div *ngIf="covenant.isExpanded" class="expanded-panel">
+          <tr *ngFor="let empresa of empresas">
+            <td (click)="empresa.isExpanded = !empresa.isExpanded">
+              {{ empresa.nombre }}
+              <div *ngIf="empresa.isExpanded" class="expanded-panel">
                 <tr class="table-row">
                   <td class="cell">Calle 127</td>
                 </tr>
               </div>
             </td>
             <td>
-              51
-              <div *ngIf="covenant.isExpanded" class="expanded-panel">
+              {{ empresa.numCompletas }}
+              <div *ngIf="empresa.isExpanded" class="expanded-panel">
                 <tr class="table-row">
                   <td class="cell">21</td>
                 </tr>
               </div>
             </td>
             <td>
-              14
-              <div *ngIf="covenant.isExpanded" class="expanded-panel">
+              {{ empresa.numIncompletas }}
+              <div *ngIf="empresa.isExpanded" class="expanded-panel">
                 <tr class="table-row">
                   <td class="cell">8</td>
                 </tr>
               </div>
             </td>
             <td>
-              65
-              <div *ngIf="covenant.isExpanded" class="expanded-panel">
+              {{ empresa.numCompletas + empresa.numIncompletas }}
+              <div *ngIf="empresa.isExpanded" class="expanded-panel">
                 <tr class="table-row">
                   <td class="cell">29</td>
                 </tr>
@@ -61,11 +61,17 @@
         </tbody>
       </table>
     </div>
-    <div class="col-sm-4">
-      <app-base-chart [graficas]="procendencias" nombre="Origen"></app-base-chart>
+    <div class="col-md-4 col-lg-4">
+      <div *ngIf="procedenciasSpinner" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <app-base-chart *ngIf="!procedenciasSpinner" [graficas]="procendencias" nombre="Origen"></app-base-chart>
     </div>
-    <div class="col-sm-4">
-      <app-base-chart [graficas]="plataformas" nombre="Plataforma"></app-base-chart>
+    <div class="col-md-4 col-lg-4">
+      <div *ngIf="plataformasSpinner" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <app-base-chart *ngIf="!plataformasSpinner" [graficas]="plataformas" nombre="Plataforma"></app-base-chart>
     </div>
   </div>
   <div class="row">
