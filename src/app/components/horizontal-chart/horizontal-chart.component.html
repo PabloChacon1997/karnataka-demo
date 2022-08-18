@@ -1,1 +1,14 @@
-<p>horizontal-chart works!</p>
+<div>
+  <div>
+    <div style="display: block; position: relative;min-height: unset;">
+      <canvas baseChart
+        [data]="graficas"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [type]="barChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+      </canvas>
+    </div>
+  </div>
+</div>

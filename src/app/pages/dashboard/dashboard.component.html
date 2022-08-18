@@ -75,7 +75,13 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-4">VENTAS CONCESIONARIO POR PROCEDENCIA DE LEADS</div>
+    <div class="col-sm-4">
+      VENTAS CONCESIONARIO POR PROCEDENCIA DE LEADS
+      <div *ngIf="plataformasSpinner" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <app-base-chart *ngIf="!plataformasSpinner" [graficas]="plataformas" nombre="Plataforma"></app-base-chart>
+    </div>
     <div class="col-sm-4">VENTAS DETAL POR CANAL</div>
     <div class="col-sm-4">VENTAS DETAL POR MEDIO</div>
   </div>

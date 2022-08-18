@@ -14,6 +14,9 @@ export class DashboardComponent implements OnInit{
   @Input() plataformas$!: Observable<any>;
   public procendencias: ChartData<'bar'> = { labels: [], datasets: [] };
   public plataformas: ChartData<'bar'>= {labels: [], datasets: [] };
+  public canales: ChartData<'bar'>= {labels: [], datasets: [] };
+
+
   public empresas: any[] = empresas;
 
   public empresasDetalle: any = {};
@@ -54,6 +57,15 @@ export class DashboardComponent implements OnInit{
         { data: [0], label: 'crm' },
         { data: [0], label: 'web' },
         { data: [0], label: 'reweb' },
+      ]
+    }
+
+    this.canales = {
+      labels: ['Canal'],
+      datasets: [
+        { data: [400], label: 'PRESENCIAL CLIENTE' },
+        { data: [1200], label: 'DIGITAL' },
+        { data: [100], label: 'PAGINA WEB' },
       ]
     }
   }
@@ -141,9 +153,7 @@ export class DashboardComponent implements OnInit{
         empresa.numCompletas = contCompleta;
         empresa.numIncompletas = contIncompleta;
       });
-    });
-    console.log(this.empresas);
-    
+    });    
   }
   
   getSumOrigen(): number {
