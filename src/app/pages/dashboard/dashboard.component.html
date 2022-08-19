@@ -25,38 +25,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let empresa of empresas">
-            <td (click)="empresa.isExpanded = !empresa.isExpanded">
+          <tr *ngFor="let empresa of empresas" >
+            <td>
               {{ empresa.nombre }}
-              <div *ngIf="empresa.isExpanded" class="expanded-panel">
-                <tr class="table-row">
-                  <td class="cell">Calle 127</td>
-                </tr>
-              </div>
             </td>
             <td>
               {{ empresa.numCompletas }}
-              <div *ngIf="empresa.isExpanded" class="expanded-panel">
-                <tr class="table-row">
-                  <td class="cell">21</td>
-                </tr>
-              </div>
             </td>
             <td>
               {{ empresa.numIncompletas }}
-              <div *ngIf="empresa.isExpanded" class="expanded-panel">
-                <tr class="table-row">
-                  <td class="cell">8</td>
-                </tr>
-              </div>
             </td>
             <td>
               {{ empresa.numCompletas + empresa.numIncompletas }}
-              <div *ngIf="empresa.isExpanded" class="expanded-panel">
-                <tr class="table-row">
-                  <td class="cell">29</td>
-                </tr>
-              </div>
             </td>
           </tr>
           <tr>
@@ -84,7 +64,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-md-6 col-lg-6">
       <div *ngIf="empresaSpinner" class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
@@ -92,7 +72,7 @@
         titulo="VENTAS CONCESIONARIO POR PROCEDENCIA DE LEADS" 
         [graficas]="concesionarios" nombre="Concesionario"></app-base-chart>
     </div>
-    <div class="col-sm-3">VENTAS DETAL POR CANAL</div>
-    <div class="col-sm-3">VENTAS DETAL POR MEDIO</div>
+    <div class="col-md-3 col-lg-3">VENTAS DETAL POR CANAL</div>
+    <div class="col-md-3 col-lg-3">VENTAS DETAL POR MEDIO</div>
   </div>
 </div>

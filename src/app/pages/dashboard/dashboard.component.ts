@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { ChartData } from 'chart.js';
 import { Observable } from 'rxjs';
 
@@ -39,7 +39,9 @@ export class DashboardComponent implements OnInit{
   }
   
   ngOnInit() {
-    // this.getDataByEmpresa();
+    this.getDataByEmpresa();
+    this.getDataByOrigen();
+    this.getDataByPlataforma();
     this.empresas.forEach((covenant:any) => {
       covenant.isExpanded = false;
     });
@@ -105,7 +107,7 @@ export class DashboardComponent implements OnInit{
     });
     setTimeout(() => {
       this.procedenciasSpinner = false;
-    }, 10000);
+    }, 50000);
   }
 
   
@@ -146,7 +148,7 @@ export class DashboardComponent implements OnInit{
 
     setTimeout(() => {
       this.plataformasSpinner = false;
-    }, 10000);
+    }, 50000);
   }
 
   async getDataByEmpresa() {
