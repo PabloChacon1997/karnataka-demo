@@ -14,6 +14,7 @@
   </div>
   <div class="row">
     <div class="col-md-4 table-responsive-xs" style="overflow: auto; height: 200px;overflow-y: inherit;">
+      <h6>ESTADO DE REGISTRO DE VENTAS DETAL</h6>
       <table class="table">
         <thead>
           <tr>
@@ -58,6 +59,12 @@
               </div>
             </td>
           </tr>
+          <tr>
+            <td>Total</td>
+            <td>{{ totalCompletas }}</td>
+            <td>{{ totalIncompletas }}</td>
+            <td>{{ total }}</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -65,24 +72,27 @@
       <div *ngIf="procedenciasSpinner" class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
-      <app-base-chart *ngIf="!procedenciasSpinner" [graficas]="procendencias" nombre="Origen"></app-base-chart>
+      <app-base-chart *ngIf="!procedenciasSpinner" 
+        titulo="VENTAS DETAL POR PROCEDENCIA DE LEADS" [graficas]="procendencias" nombre="Origen"></app-base-chart>
     </div>
     <div class="col-md-4 col-lg-4">
       <div *ngIf="plataformasSpinner" class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
-      <app-base-chart *ngIf="!plataformasSpinner" [graficas]="plataformas" nombre="Plataforma"></app-base-chart>
+      <app-base-chart *ngIf="!plataformasSpinner" 
+        titulo="VENTAS DETAL POR PLATAFORMA" [graficas]="plataformas" nombre="Plataforma"></app-base-chart>
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-4">
-      VENTAS CONCESIONARIO POR PROCEDENCIA DE LEADS
-      <div *ngIf="plataformasSpinner" class="spinner-border" role="status">
+    <div class="col-sm-6">
+      <div *ngIf="empresaSpinner" class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
-      <app-base-chart *ngIf="!plataformasSpinner" [graficas]="plataformas" nombre="Plataforma"></app-base-chart>
+      <app-base-chart *ngIf="!empresaSpinner" 
+        titulo="VENTAS CONCESIONARIO POR PROCEDENCIA DE LEADS" 
+        [graficas]="concesionarios" nombre="Concesionario"></app-base-chart>
     </div>
-    <div class="col-sm-4">VENTAS DETAL POR CANAL</div>
-    <div class="col-sm-4">VENTAS DETAL POR MEDIO</div>
+    <div class="col-sm-3">VENTAS DETAL POR CANAL</div>
+    <div class="col-sm-3">VENTAS DETAL POR MEDIO</div>
   </div>
 </div>

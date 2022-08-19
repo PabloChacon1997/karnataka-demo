@@ -1,26 +1,56 @@
 export const empresas = [
   {
-    nombre: "ALCALA"
+    nombre: "AUTOMOTOR"
   },
   {
-    nombre: "AUTOMOTOR"
+    nombre: "ALCALA"
   },
   {
     nombre: "MOTOR HYUNDAI"
   },
   {
-    nombre: "AUTOALAMO"
+    nombre: "HYUNDAI COLOMBIA S.A.S"
+  },
+  {
+    nombre: "AUTONORTE"
   },
   {
     nombre: "FERSAUTOS"
   },
   {
-    nombre: "ALFAMOTORS"
+    nombre: "LOS COCHES"
   },
   {
-    nombre: "MOEVO"
+    nombre: "MADIAUTOS"
   },
   {
-    nombre: "CASAUTOS"
+    nombre: "AUTOPACIFICA"
   },
+  {
+    nombre: "CENTRAL MOTOR"
+  },
+  {
+    nombre: "REINDUSTRIAS"
+  },
+  {
+    nombre: "AUTOUNION S.A"
+  },
+  // {
+  //   nombre: "AUTOALAMO"
+  // },
+  // {
+  //   nombre: "AUTOCHICALA S.A.S"
+  // },
+  // {
+  //   nombre: "AUTAMA"
+  // },
+  // {
+  //   nombre: "ALFAMOTORS"
+  // },
+  // {
+  //   nombre: "MOEVO"
+  // },
+  // {
+  //   nombre: "CASAUTOS"
+  // },
 ]

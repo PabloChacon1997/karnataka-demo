@@ -14,8 +14,11 @@ export class DashboardComponent implements OnInit{
   @Input() plataformas$!: Observable<any>;
   public procendencias: ChartData<'bar'> = { labels: [], datasets: [] };
   public plataformas: ChartData<'bar'>= {labels: [], datasets: [] };
-  public canales: ChartData<'bar'>= {labels: [], datasets: [] };
-
+  public concesionarios: ChartData<'bar'>= {labels: [], datasets: [] };
+  
+  public total: number = 0;
+  public totalCompletas: number = 0;
+  public totalIncompletas: number = 0;
 
   public empresas: any[] = empresas;
 
@@ -23,6 +26,7 @@ export class DashboardComponent implements OnInit{
 
   public procedenciasSpinner: boolean = false;
   public plataformasSpinner: boolean = false;
+  public empresaSpinner: boolean = false;
 
   public dataOrigen: any[] = [];
   public dataPlataforma: any[] = [];
@@ -35,10 +39,11 @@ export class DashboardComponent implements OnInit{
   }
   
   ngOnInit() {
-    this.getDataByEmpresa();
+    // this.getDataByEmpresa();
     this.empresas.forEach((covenant:any) => {
       covenant.isExpanded = false;
     });
+    
   }
 
   async getInitialization() {
@@ -60,14 +65,16 @@ export class DashboardComponent implements OnInit{
       ]
     }
 
-    this.canales = {
-      labels: ['Canal'],
-      datasets: [
-        { data: [400], label: 'PRESENCIAL CLIENTE' },
-        { data: [1200], label: 'DIGITAL' },
-        { data: [100], label: 'PAGINA WEB' },
-      ]
-    }
+    this.concesionarios.labels = [''];
+    this.concesionarios.datasets = [
+      {data: [0], label: 'Completa' },
+      {data: [0], label: 'Incompleta' },
+    ];
+    empresas.forEach((empresa) => {
+      this.concesionarios.labels?.push(empresa.nombre);
+      this.concesionarios.datasets[0].data.push(0);
+      this.concesionarios.datasets[1].data.push(0);
+    })
   }
 
 
@@ -95,8 +102,10 @@ export class DashboardComponent implements OnInit{
         data: [ numero ],
         label: 'CONCESIONARIOS',
       }
-      this.procedenciasSpinner = false;
     });
+    setTimeout(() => {
+      this.procedenciasSpinner = false;
+    }, 10000);
   }
 
   
@@ -111,7 +120,7 @@ export class DashboardComponent implements OnInit{
         data: [ numero ],
         label: 'crm',
       }
-      this.plataformasSpinner = false
+      
     });
     await this.facDetOrService.getDataBy('plataforma', 'web').subscribe( (res:any) => {
       this.dataPlataforma = res;
@@ -134,10 +143,20 @@ export class DashboardComponent implements OnInit{
       }
 
     });
+
+    setTimeout(() => {
+      this.plataformasSpinner = false;
+    }, 10000);
   }
 
-  getDataByEmpresa() {
-    this.empresas.forEach( async (empresa, i) => {
+  async getDataByEmpresa() {
+    this.empresaSpinner = true;
+    this.concesionarios.labels = [];
+    this.concesionarios.datasets = [
+      {data: [], label: 'Completa' },
+      {data: [], label: 'Incompleta' },
+    ];
+    await this.empresas.forEach( async (empresa, i) => {
       let contCompleta = 0;
       let contIncompleta = 0;
       await this.facDetOrService.getDataBy('empresa', empresa.nombre).subscribe( (res:any) => {
@@ -152,8 +171,17 @@ export class DashboardComponent implements OnInit{
         });
         empresa.numCompletas = contCompleta;
         empresa.numIncompletas = contIncompleta;
+        this.concesionarios.labels?.push(empresa.nombre);
+        this.concesionarios.datasets[0].data.push(empresa.numCompletas);
+        this.concesionarios.datasets[1].data.push(empresa.numIncompletas);
+        this.totalCompletas += contCompleta;
+        this.totalIncompletas += contIncompleta;
+        this.total += contCompleta + contIncompleta;
       });
-    });    
+    });
+    setTimeout(() => {
+      this.empresaSpinner = false
+    }, 5000);
   }
   
   getSumOrigen(): number {

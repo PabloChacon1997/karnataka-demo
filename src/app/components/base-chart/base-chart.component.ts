@@ -13,6 +13,7 @@ export class BaseChartComponent {
 
   @Input('graficas') graficas: ChartData<'bar'> = { labels: [], datasets: [] };
   @Input('nombre') nombre: string = '';
+  @Input('titulo') titulo: string = '';
 
   
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
